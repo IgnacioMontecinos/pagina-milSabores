@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
+
 function UsuariosAdmin() {
   return (
     <>
       <h1>Usuarios</h1>
-      <p><a className="btn" href="usuario-form.html">Nuevo usuario</a></p>
+      <p><Link className="btn" to="/admin/usuario-form">Nuevo usuario</Link></p>
       <table>
         <thead>
           <tr>
@@ -20,8 +22,8 @@ function UsuariosAdmin() {
             <td>admin@duoc.cl</td>
             <td>Administrador</td>
             <td className="actions">
-              <a className="btn" href="usuario-ver.html?id=1">Ver</a>
-              <a className="btn" href="usuario-form.html?id=1">Editar</a>
+              <Link className="btn" to="/admin/usuario-ver?id=1">Ver</Link>
+              <Link className="btn" to="/admin/usuario-form?id=1">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -31,8 +33,8 @@ function UsuariosAdmin() {
             <td>vendedor@duoc.cl</td>
             <td>Vendedor</td>
             <td className="actions">
-              <a className="btn" href="usuario-ver.html?id=2">Ver</a>
-              <a className="btn" href="usuario-form.html?id=2">Editar</a>
+              <Link className="btn" to="/admin/usuario-ver?id=2">Ver</Link>
+              <Link className="btn" to="/admin/usuario-form?id=2">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>

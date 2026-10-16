@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function DetalleProducto() {
   return (
     <>
@@ -16,30 +18,30 @@ function DetalleProducto() {
       <h2>También te puede gustar</h2>
       <section className="grid">
         <article className="card">
-          <a href="producto.html?id=2">
+          <Link to="/producto?id=2">
             <img src="/torta-frutilla.jpg" alt="Torta de Frutilla" />
             <h3>Torta de Frutilla</h3>
-          </a>
+          </Link>
           <p>Bizcocho suave con crema y frutillas frescas.</p>
           <p className="price">$19.990</p>
           <button>Añadir al carrito</button>
         </article>
 
         <article className="card">
-          <a href="producto.html?id=3">
+          <Link to="/producto?id=3">
             <img src="/cheesecake.jpg" alt="Cheesecake" />
             <h3>Cheesecake</h3>
-          </a>
+          </Link>
           <p>Cheesecake cremoso con base de galleta.</p>
           <p className="price">$14.990</p>
           <button>Añadir al carrito</button>
         </article>
 
         <article className="card">
-          <a href="producto.html?id=4">
+          <Link to="/producto?id=4">
             <img src="/pie-limon.jpg" alt="Pie de Limón" />
             <h3>Pie de Limón</h3>
-          </a>
+          </Link>
           <p>Pie artesanal con crema de limón y merengue.</p>
           <p className="price">$12.990</p>
           <button>Añadir al carrito</button>

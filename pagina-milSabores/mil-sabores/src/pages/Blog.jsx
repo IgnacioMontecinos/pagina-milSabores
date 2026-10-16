@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Blog() {
   return (
     <>
@@ -7,7 +9,7 @@ function Blog() {
         <div>
           <h2>¿Cómo elegir la torta perfecta?</h2>
           <p>Conoce algunos consejos para elegir una torta para cada ocasión.</p>
-          <a className="btn" href="blog1.html">Ver artículo</a>
+          <Link className="btn" to="/blog/1">Ver artículo</Link>
         </div>
         <img src="/blog1.jpg" alt="Tortas" />
       </article>
@@ -17,7 +19,7 @@ function Blog() {
         <div>
           <h2>El secreto de nuestros sabores</h2>
           <p>Descubre cómo elaboramos nuestros productos artesanales.</p>
-          <a className="btn" href="blog2.html">Ver artículo</a>
+          <Link className="btn" to="/blog/2">Ver artículo</Link>
         </div>
       </article>
     </>

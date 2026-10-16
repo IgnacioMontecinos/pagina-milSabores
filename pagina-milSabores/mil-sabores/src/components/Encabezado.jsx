@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom'
 import BarraNavegacion from './BarraNavegacion'
 
 function Encabezado({ esAdmin = false }) {
   return (
     <header id="header">
       <div className="top">
-        <a className="brand" href="index.html">
+        <Link className="brand" to="/">
           <img src="/logo.png" alt="Logo" />
           Mil Sabores
-        </a>
+        </Link>
         <BarraNavegacion esAdmin={esAdmin} />
       </div>
     </header>

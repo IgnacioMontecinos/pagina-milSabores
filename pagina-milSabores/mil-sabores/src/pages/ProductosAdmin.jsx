@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
+
 function ProductosAdmin() {
   return (
     <>
       <h1>Productos</h1>
-      <p><a className="btn" href="producto-form.html">Nuevo producto</a></p>
+      <p><Link className="btn" to="/admin/producto-form">Nuevo producto</Link></p>
       <table>
         <thead>
           <tr>
@@ -20,8 +22,8 @@ function ProductosAdmin() {
             <td>$18.990</td>
             <td>12</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=1">Ver</a>
-              <a className="btn" href="producto-form.html?id=1">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=1">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=1">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -31,8 +33,8 @@ function ProductosAdmin() {
             <td>$19.990</td>
             <td>8</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=2">Ver</a>
-              <a className="btn" href="producto-form.html?id=2">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=2">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=2">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -42,8 +44,8 @@ function ProductosAdmin() {
             <td>$14.990</td>
             <td>9</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=3">Ver</a>
-              <a className="btn" href="producto-form.html?id=3">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=3">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=3">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -53,8 +55,8 @@ function ProductosAdmin() {
             <td>$12.990</td>
             <td>15</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=4">Ver</a>
-              <a className="btn" href="producto-form.html?id=4">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=4">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=4">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -64,8 +66,8 @@ function ProductosAdmin() {
             <td>$9.990</td>
             <td>20</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=5">Ver</a>
-              <a className="btn" href="producto-form.html?id=5">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=5">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=5">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
@@ -75,8 +77,8 @@ function ProductosAdmin() {
             <td>$7.990</td>
             <td>25</td>
             <td className="actions">
-              <a className="btn" href="producto-ver.html?id=6">Ver</a>
-              <a className="btn" href="producto-form.html?id=6">Editar</a>
+              <Link className="btn" to="/admin/producto-ver?id=6">Ver</Link>
+              <Link className="btn" to="/admin/producto-form?id=6">Editar</Link>
               <button>Eliminar</button>
             </td>
           </tr>
