@@ -1,14 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useTienda } from '../useTienda'
 
 function BarraNavegacion({ esAdmin = false }) {
+  const { sesion, cantidadCarrito, cerrarSesion } = useTienda()
+  const navigate = useNavigate()
+
   if (esAdmin) {
+    const salir = () => {
+      cerrarSesion()
+      navigate('/login')
+    }
+
     return (
       <nav>
         <Link to="/admin">Inicio</Link>
         <Link to="/admin/productos">Productos</Link>
-        <Link to="/admin/usuarios">Usuarios</Link>
+        {sesion?.rol === 'Administrador' && <Link to="/admin/usuarios">Usuarios</Link>}
         <Link to="/">Tienda</Link>
-        <Link to="/login">Salir</Link>
+        <button onClick={salir}>Salir</button>
       </nav>
     )
   }
@@ -22,7 +31,7 @@ function BarraNavegacion({ esAdmin = false }) {
       <Link to="/contacto">Contacto</Link>
       <Link to="/login">Ingresar</Link>
       <Link to="/carrito">
-        🛒 (<span id="cartCount">0</span>)
+        🛒 ({cantidadCarrito})
       </Link>
     </nav>
   )

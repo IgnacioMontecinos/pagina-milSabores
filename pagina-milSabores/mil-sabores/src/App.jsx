@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { TiendaProvider } from './tienda'
 import Encabezado from './components/Encabezado'
 import PiePagina from './components/PiePagina'
+import RutaProtegida from './components/RutaProtegida'
 import Inicio from './pages/Inicio'
 import Productos from './pages/Productos'
 import DetalleProducto from './pages/DetalleProducto'
@@ -45,13 +47,13 @@ function Layout() {
           <Route path="/registro" element={<Registro />} />
           <Route path="/carrito" element={<Carrito />} />
 
-          <Route path="/admin" element={<Administrador />} />
-          <Route path="/admin/productos" element={<ProductosAdmin />} />
-          <Route path="/admin/producto-form" element={<FormularioProductoAdmin />} />
-          <Route path="/admin/producto-ver" element={<DetalleProductoAdmin />} />
-          <Route path="/admin/usuarios" element={<UsuariosAdmin />} />
-          <Route path="/admin/usuario-form" element={<FormularioUsuarioAdmin />} />
-          <Route path="/admin/usuario-ver" element={<DetalleUsuarioAdmin />} />
+          <Route path="/admin" element={<RutaProtegida><Administrador /></RutaProtegida>} />
+          <Route path="/admin/productos" element={<RutaProtegida><ProductosAdmin /></RutaProtegida>} />
+          <Route path="/admin/producto-form" element={<RutaProtegida><FormularioProductoAdmin /></RutaProtegida>} />
+          <Route path="/admin/producto-ver" element={<RutaProtegida><DetalleProductoAdmin /></RutaProtegida>} />
+          <Route path="/admin/usuarios" element={<RutaProtegida><UsuariosAdmin /></RutaProtegida>} />
+          <Route path="/admin/usuario-form" element={<RutaProtegida><FormularioUsuarioAdmin /></RutaProtegida>} />
+          <Route path="/admin/usuario-ver" element={<RutaProtegida><DetalleUsuarioAdmin /></RutaProtegida>} />
 
           <Route path="*" element={<Inicio />} />
         </Routes>
@@ -63,9 +65,11 @@ function Layout() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Layout />
-    </BrowserRouter>
+    <TiendaProvider>
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
+    </TiendaProvider>
   )
 }
 

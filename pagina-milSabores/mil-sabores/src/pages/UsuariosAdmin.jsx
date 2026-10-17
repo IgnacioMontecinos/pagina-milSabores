@@ -1,6 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useTienda } from '../useTienda'
 
 function UsuariosAdmin() {
+  const { usuarios, sesion, eliminarUsuario } = useTienda()
+
+  if (sesion?.rol !== 'Administrador') return <Navigate to="/admin" replace />
+
+  const eliminar = (id) => {
+    if (id <= 2) return alert('Los usuarios de demostración no se eliminan.')
+    if (confirm('¿Eliminar usuario?')) eliminarUsuario(id)
+  }
+
   return (
     <>
       <h1>Usuarios</h1>
@@ -16,28 +26,19 @@ function UsuariosAdmin() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>-</td>
-            <td>Administrador Mil Sabores</td>
-            <td>admin@duoc.cl</td>
-            <td>Administrador</td>
-            <td className="actions">
-              <Link className="btn" to="/admin/usuario-ver?id=1">Ver</Link>
-              <Link className="btn" to="/admin/usuario-form?id=1">Editar</Link>
-              <button>Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td>-</td>
-            <td>Vendedor Mil Sabores</td>
-            <td>vendedor@duoc.cl</td>
-            <td>Vendedor</td>
-            <td className="actions">
-              <Link className="btn" to="/admin/usuario-ver?id=2">Ver</Link>
-              <Link className="btn" to="/admin/usuario-form?id=2">Editar</Link>
-              <button>Eliminar</button>
-            </td>
-          </tr>
+          {usuarios.map((u) => (
+            <tr key={u.id}>
+              <td>{u.run || '-'}</td>
+              <td>{u.nombre} {u.apellidos}</td>
+              <td>{u.correo}</td>
+              <td>{u.rol}</td>
+              <td className="actions">
+                <Link className="btn" to={`/admin/usuario-ver?id=${u.id}`}>Ver</Link>
+                <Link className="btn" to={`/admin/usuario-form?id=${u.id}`}>Editar</Link>
+                <button onClick={() => eliminar(u.id)}>Eliminar</button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

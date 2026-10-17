@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { money } from '../datos'
+import { useTienda } from '../useTienda'
 
 function Inicio() {
+  const { productos, agregarAlCarrito } = useTienda()
+
   return (
     <>
       <section className="hero">
@@ -14,35 +18,17 @@ function Inicio() {
 
       <h2>Productos destacados</h2>
       <section className="grid">
-        <article className="card">
-          <Link to="/producto?id=1">
-            <img src="/torta-chocolate.jpg" alt="Torta de Chocolate" />
-            <h3>Torta de Chocolate</h3>
-          </Link>
-          <p>Torta artesanal de chocolate con suave relleno de crema.</p>
-          <p className="price">$18.990</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article className="card">
-          <Link to="/producto?id=2">
-            <img src="/torta-frutilla.jpg" alt="Torta de Frutilla" />
-            <h3>Torta de Frutilla</h3>
-          </Link>
-          <p>Bizcocho suave con crema y frutillas frescas.</p>
-          <p className="price">$19.990</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article className="card">
-          <Link to="/producto?id=3">
-            <img src="/cheesecake.jpg" alt="Cheesecake" />
-            <h3>Cheesecake</h3>
-          </Link>
-          <p>Cheesecake cremoso con base de galleta.</p>
-          <p className="price">$14.990</p>
-          <button>Añadir al carrito</button>
-        </article>
+        {productos.slice(0, 3).map((p) => (
+          <article className="card" key={p.id}>
+            <Link to={`/producto?id=${p.id}`}>
+              <img src={p.img} alt={p.nombre} />
+              <h3>{p.nombre}</h3>
+            </Link>
+            <p>{p.descripcion}</p>
+            <p className="price">{money(p.precio)}</p>
+            <button onClick={() => agregarAlCarrito(p.id)}>Añadir al carrito</button>
+          </article>
+        ))}
       </section>
     </>
   )
