@@ -111,7 +111,9 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,15 +142,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,32 +180,34 @@ function <span class="fstat-no" title="function not covered" >UsuariosAdmin() {<
     &lt;&gt;
       &lt;h1&gt;Usuarios&lt;/h1&gt;
       &lt;p&gt;&lt;Link className="btn" to="/admin/usuario-form"&gt;Nuevo usuario&lt;/Link&gt;&lt;/p&gt;
-      &lt;table&gt;
-        &lt;thead&gt;
-          &lt;tr&gt;
-            &lt;th&gt;RUN&lt;/th&gt;
-            &lt;th&gt;Nombre&lt;/th&gt;
-            &lt;th&gt;Correo&lt;/th&gt;
-            &lt;th&gt;Rol&lt;/th&gt;
-            &lt;th&gt;Acciones&lt;/th&gt;
-          &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody&gt;
-          {usuarios.<span class="fstat-no" title="function not covered" >map((u</span>) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;tr key={u.id}&gt;</span>
-              &lt;td&gt;{u.run || '-'}&lt;/td&gt;
-              &lt;td&gt;{u.nombre} {u.apellidos}&lt;/td&gt;
-              &lt;td&gt;{u.correo}&lt;/td&gt;
-              &lt;td&gt;{u.rol}&lt;/td&gt;
-              &lt;td className="actions"&gt;
-                &lt;Link className="btn" to={`/admin/usuario-ver?id=${u.id}`}&gt;Ver&lt;/Link&gt;
-                &lt;Link className="btn" to={`/admin/usuario-form?id=${u.id}`}&gt;Editar&lt;/Link&gt;
-                &lt;button <span class="fstat-no" title="function not covered" >onClick={() =&gt; <span class="cstat-no" title="statement not covered" >e</span>liminar(u.id)}&gt;E</span>liminar&lt;/button&gt;
-              &lt;/td&gt;
+      &lt;div className="table-responsive"&gt;
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;RUN&lt;/th&gt;
+              &lt;th&gt;Nombre&lt;/th&gt;
+              &lt;th&gt;Correo&lt;/th&gt;
+              &lt;th&gt;Rol&lt;/th&gt;
+              &lt;th&gt;Acciones&lt;/th&gt;
             &lt;/tr&gt;
-          ))}
-        &lt;/tbody&gt;
-      &lt;/table&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            {usuarios.<span class="fstat-no" title="function not covered" >map((u</span>) =&gt; (
+<span class="cstat-no" title="statement not covered" >              &lt;tr key={u.id}&gt;</span>
+                &lt;td&gt;{u.run || '-'}&lt;/td&gt;
+                &lt;td&gt;{u.nombre} {u.apellidos}&lt;/td&gt;
+                &lt;td&gt;{u.correo}&lt;/td&gt;
+                &lt;td&gt;{u.rol}&lt;/td&gt;
+                &lt;td className="actions"&gt;
+                  &lt;Link className="btn" to={`/admin/usuario-ver?id=${u.id}`}&gt;Ver&lt;/Link&gt;
+                  &lt;Link className="btn" to={`/admin/usuario-form?id=${u.id}`}&gt;Editar&lt;/Link&gt;
+                  &lt;button <span class="fstat-no" title="function not covered" >onClick={() =&gt; <span class="cstat-no" title="statement not covered" >e</span>liminar(u.id)}&gt;E</span>liminar&lt;/button&gt;
+                &lt;/td&gt;
+              &lt;/tr&gt;
+            ))}
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
     &lt;/&gt;
   )
 }
@@ -214,7 +220,7 @@ export default UsuariosAdmin
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-17T21:19:05.437Z
+                at 2026-10-19T01:27:45.333Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

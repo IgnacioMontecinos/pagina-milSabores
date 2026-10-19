@@ -15,32 +15,34 @@ function UsuariosAdmin() {
     <>
       <h1>Usuarios</h1>
       <p><Link className="btn" to="/admin/usuario-form">Nuevo usuario</Link></p>
-      <table>
-        <thead>
-          <tr>
-            <th>RUN</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {usuarios.map((u) => (
-            <tr key={u.id}>
-              <td>{u.run || '-'}</td>
-              <td>{u.nombre} {u.apellidos}</td>
-              <td>{u.correo}</td>
-              <td>{u.rol}</td>
-              <td className="actions">
-                <Link className="btn" to={`/admin/usuario-ver?id=${u.id}`}>Ver</Link>
-                <Link className="btn" to={`/admin/usuario-form?id=${u.id}`}>Editar</Link>
-                <button onClick={() => eliminar(u.id)}>Eliminar</button>
-              </td>
+      <div className="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>RUN</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Rol</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {usuarios.map((u) => (
+              <tr key={u.id}>
+                <td>{u.run || '-'}</td>
+                <td>{u.nombre} {u.apellidos}</td>
+                <td>{u.correo}</td>
+                <td>{u.rol}</td>
+                <td className="actions">
+                  <Link className="btn" to={`/admin/usuario-ver?id=${u.id}`}>Ver</Link>
+                  <Link className="btn" to={`/admin/usuario-form?id=${u.id}`}>Editar</Link>
+                  <button onClick={() => eliminar(u.id)}>Eliminar</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

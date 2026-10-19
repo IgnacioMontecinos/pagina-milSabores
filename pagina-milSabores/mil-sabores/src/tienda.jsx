@@ -27,19 +27,54 @@ export function TiendaProvider({ children }) {
   )
 
   const agregarAlCarrito = (id) => {
+    const p = productos.find((x) => x.id === id)
+    const cantidadActual = carrito.find((x) => x.id === id)?.cantidad || 0
+    if (!p || cantidadActual >= p.stock) {
+      alert('No hay más stock disponible de este producto')
+      return false
+    }
     setCarrito((c) => {
       const x = c.find((y) => y.id === id)
       return x ? c.map((y) => (y.id === id ? { ...y, cantidad: y.cantidad + 1 } : y)) : [...c, { id, cantidad: 1 }]
     })
     alert('Producto agregado al carrito')
+    return true
   }
 
   const quitarDelCarrito = (id) => setCarrito((c) => c.filter((x) => x.id !== id))
 
-  const cambiarCantidad = (id, delta) =>
+  const cambiarCantidad = (id, delta) => {
+    const p = productos.find((x) => x.id === id)
+    const linea = carrito.find((x) => x.id === id)
+    if (!linea) return
+    if (delta > 0 && p && linea.cantidad + delta > p.stock) {
+      alert('No hay más stock disponible de este producto')
+      return
+    }
     setCarrito((c) =>
       c.map((x) => (x.id === id ? { ...x, cantidad: Math.max(1, x.cantidad + delta) } : x)),
     )
+  }
+
+  const finalizarCompra = () => {
+    if (!carrito.length) return { ok: false, error: 'El carrito está vacío' }
+
+    const descontados = carrito
+      .map((x) => {
+        const p = productos.find((y) => y.id === x.id)
+        return p ? { id: p.id, cantidad: Math.min(x.cantidad, p.stock) } : null
+      })
+      .filter(Boolean)
+
+    setProductos((ps) =>
+      ps.map((p) => {
+        const d = descontados.find((x) => x.id === p.id)
+        return d ? { ...p, stock: Math.max(0, p.stock - d.cantidad) } : p
+      }),
+    )
+    setCarrito([])
+    return { ok: true }
+  }
 
   const iniciarSesion = (correo, password) => {
     const u = usuarios.find(
@@ -91,6 +126,7 @@ export function TiendaProvider({ children }) {
         agregarAlCarrito,
         quitarDelCarrito,
         cambiarCantidad,
+        finalizarCompra,
         iniciarSesion,
         cerrarSesion,
         guardarProducto,

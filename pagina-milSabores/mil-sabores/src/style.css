@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    line-height: normal;
     background: #fffaf5;
     color: #3e2723;
 }
@@ -283,4 +284,71 @@ footer {
     table {
         font-size: 12px;
     }
+}
+
+/* ------------------------------------------------------------------
+   Compatibilidad con Bootstrap 5
+   Bootstrap se carga antes que este archivo. Estas reglas restauran
+   los valores por defecto del navegador que el "reboot" de Bootstrap
+   modifica, para conservar el aspecto visual original del sitio.
+   ------------------------------------------------------------------ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+p {
+    margin: 1em 0;
+}
+
+ul,
+ol {
+    margin: 1em 0;
+}
+
+small {
+    font-size: 0.83em;
+}
+
+input,
+textarea,
+select,
+button {
+    font-family: Arial, sans-serif;
+    font-size: 13.3333px;
 }

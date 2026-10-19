@@ -55,6 +55,10 @@ function FormularioUsuario({ admin = false }) {
       return setMsg({ texto: 'Contraseña entre 4 y 10 caracteres', ok: false })
     }
     if (!data.direccion) return setMsg({ texto: 'La dirección es obligatoria', ok: false })
+    if (!admin) {
+      if (!data.region) return setMsg({ texto: 'Debe seleccionar una región', ok: false })
+      if (!data.comuna) return setMsg({ texto: 'Debe seleccionar una comuna', ok: false })
+    }
 
     guardarUsuario(data)
 

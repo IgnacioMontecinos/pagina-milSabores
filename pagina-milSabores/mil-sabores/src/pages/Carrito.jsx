@@ -1,13 +1,22 @@
+import { useState } from 'react'
 import { money } from '../datos'
 import { useTienda } from '../useTienda'
 
 function Carrito() {
-  const { carrito, productos, quitarDelCarrito, cambiarCantidad } = useTienda()
+  const { carrito, productos, quitarDelCarrito, cambiarCantidad, finalizarCompra } = useTienda()
+  const [msg, setMsg] = useState({ texto: '', ok: false })
+
+  const pagar = () => {
+    const r = finalizarCompra()
+    if (r.ok) setMsg({ texto: '¡Compra realizada! Gracias por su pedido.', ok: true })
+    else setMsg({ texto: r.error, ok: false })
+  }
 
   if (!carrito.length) {
     return (
       <>
         <h1>Mi carrito</h1>
+        {msg.texto && <p className={msg.ok ? 'msg ok' : 'msg'}>{msg.texto}</p>}
         <p>Tu carrito está vacío.</p>
       </>
     )
@@ -41,7 +50,7 @@ function Carrito() {
       })}
 
       <p className="total">Total: {money(total)}</p>
-      <button onClick={() => alert('Compra simulada correctamente')}>Pagar</button>
+      <button onClick={pagar}>Pagar</button>
     </>
   )
 }
